@@ -468,13 +468,14 @@ def foodHeuristic(state, problem):
     problem.heuristicInfo['wallCount']
     """
     position, foodGrid = state
+    gs = problem.startingGameState
     food = foodGrid.asList()
     furthest = 0
 
     for f in food:
-        distance = util.manhattanDistance(position, f)
-        if furthest < distance:
-            furthest = distance
+        dist = mazeDistance(position, f, gs)
+        if furthest < dist:
+            furthest = dist
     return furthest
 
 
